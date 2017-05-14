@@ -17,9 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
-public class CommonController implements ErrorController {
+@RequestMapping("/error")
+public class AppErrorController implements ErrorController {
 
-    private final Logger logger = LoggerFactory.getLogger(CommonController.class);
+    private final Logger logger = LoggerFactory.getLogger(AppErrorController.class);
 
     @Autowired
     private ErrorAttributes errorAttributes;
@@ -31,12 +32,12 @@ public class CommonController implements ErrorController {
         return ERROR_PATH;
     }
 
-    @RequestMapping(path = ERROR_PATH, produces = "text/html")
+    @RequestMapping(produces = "text/html")
     public String errorHtml() {
-        return "error";
+        return "admin.error";
     }
 
-    @RequestMapping(path = ERROR_PATH)
+    @RequestMapping
     @ResponseBody
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
         Map<String, Object> body = getErrorAttributes(request, true);
@@ -63,15 +64,5 @@ public class CommonController implements ErrorController {
         map.put("URL", URL);
         logger.debug("AppErrorController.method [error info]: status-" + map.get("status") + ", request url-" + URL);
         return map;
-    }
-
-    @RequestMapping({"/", "/index"})
-    public String index() {
-        return "index";
-    }
-
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
     }
 }

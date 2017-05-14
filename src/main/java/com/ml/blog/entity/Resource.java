@@ -1,17 +1,8 @@
 package com.ml.blog.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,10 +12,7 @@ import java.util.Set;
 public class Resource implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "id")
-    @GenericGenerator(name = "id", strategy = "assigned")
-    @Column(name = "id", unique = true, nullable = false, length = 32)
-    private String id;
+    private Integer id;
     @Column(unique = true, nullable = false)
     private String name;
     @Column(name = "res_type")
@@ -38,11 +26,11 @@ public class Resource implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "resource")
     private Set<ResourceRole> resourceRoles = new HashSet<>(0);
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

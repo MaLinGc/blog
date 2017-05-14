@@ -1,18 +1,8 @@
 package com.ml.blog.entity;
 
 import com.ml.common.enums.AuthName;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -20,9 +10,6 @@ import java.io.Serializable;
 public class Certificate implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "id")
-    @GenericGenerator(name = "id", strategy = "assigned")
-    @Column(name = "id", unique = true, nullable = false, length = 32)
     private String id;
 
     @ManyToOne(fetch = FetchType.EAGER)

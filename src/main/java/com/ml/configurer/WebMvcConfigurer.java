@@ -2,6 +2,7 @@ package com.ml.configurer;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
@@ -25,4 +26,12 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
+        registry.addRedirectViewController("/", "/index");
+        registry.addViewController("/index").setViewName("admin.index");
+        registry.addViewController("/admin").setViewName("admin.index");
+
+    }
 }

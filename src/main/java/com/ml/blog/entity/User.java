@@ -31,8 +31,13 @@ public class User implements Serializable {
     private String name;
     private String gender;
     private Integer age;
-    private String email;
     private String address;
+    private String email;
+    private Integer qq;
+    private String osc;
+    private String weibo;
+    private String github;
+
     @Column(name = "create_time", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -123,5 +128,37 @@ public class User implements Serializable {
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public Integer getQq() {
+        return qq;
+    }
+
+    public void setQq(Integer qq) {
+        this.qq = qq;
+    }
+
+    public String getOsc() {
+        return osc;
+    }
+
+    public void setOsc(String osc) {
+        this.osc = osc;
+    }
+
+    public String getWeibo() {
+        return weibo;
+    }
+
+    public void setWeibo(String weibo) {
+        this.weibo = weibo;
+    }
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
     }
 }
