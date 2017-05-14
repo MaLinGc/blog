@@ -104,6 +104,6 @@
 <script src="${staticPath}/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
 <![endif]-->
 
-<script src="${staticPath}/js/app.min.js"></script>
+<script src="${staticPath}/js/app.js"></script>
 </body>
 </html>
